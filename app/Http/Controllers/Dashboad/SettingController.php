@@ -15,10 +15,10 @@ class SettingController extends Controller
     {
 //        $methods = (new ReflectionClass('App\Models\Setting'))->getMethods();
 //        dd($methods);
-//        dd($request);
+
         $rules = [
-            'logo' => 'required|mimes:jpg,jpeg,bmp,png|max:2048',
-            'favicon' => 'required|mimes:jpg,jpeg,bmp,png|max:2048',
+            'logo' => 'nullable|mimes:jpg,jpeg,bmp,png|max:2048',
+            'favicon' => 'nullable|mimes:jpg,jpeg,bmp,png|max:2048',
             'facebook' => 'nullable|string',
             'instagram' => 'nullable|string',
             'phone' => 'nullable|string',
@@ -31,11 +31,9 @@ class SettingController extends Controller
             $rules[$key.'*.address'] = 'nullable|string';
         }
 
-//        dd($rules);
-        $validatedData = $request->validate($rules);
+        $validated = $request->validate($rules);
 
-
-        $settings->update($request->except('logo', 'favicon', '_token'));
+        $settings->update($validated);
 
         if($request->file('logo')) {
             $fileName = time() . '_logo_' . $request->file('logo')->getClientOriginalName();
@@ -51,8 +49,6 @@ class SettingController extends Controller
             $settings->update(['favicon' => $favicon]);
         }
 
-
-        //Setting::create($request->all());
         return redirect()->route('dashboard.settings');
     }
 }
