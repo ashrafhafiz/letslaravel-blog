@@ -36,6 +36,9 @@
                                     <div class="form-group col-md-6">
                                         <label for="logo">{{ __('dict.logo') }}</label>
                                         <input type="file" name="logo" class="form-control" placeholder="Enter logo...">
+                                        @if ($errors->has('logo'))
+                                            <span class="text-danger">{{ $errors->first('logo') }}</span>
+                                        @endif
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="" class="d-block">{{ __('dict.current_logo') }}</label>
@@ -47,6 +50,9 @@
                                         <label for="favicon">{{ __('dict.favicon') }}</label>
                                         <input type="file" name="favicon" class="form-control"
                                                placeholder="Enter favicon...">
+                                        @if ($errors->has('favicon'))
+                                            <span class="text-danger">{{ $errors->first('favicon') }}</span>
+                                        @endif
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="" class="d-block">{{ __('dict.current_favicon') }}</label>
@@ -58,21 +64,33 @@
                                     <label for="facebook">{{ __('dict.facebook') }}</label>
                                     <input type="text" name="facebook" class="form-control"
                                            value="{{ $settings->facebook }}" placeholder="Enter facebook address">
+                                    @if ($errors->has('facebook'))
+                                        <span class="text-danger">{{ $errors->first('facebook') }}</span>
+                                    @endif
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="instagram">{{ __('dict.instagram') }}</label>
                                     <input type="text" name="instagram" class="form-control"
                                            value="{{ $settings->instagram }}" placeholder="Enter instagram address">
+                                    @if ($errors->has('instagram'))
+                                        <span class="text-danger">{{ $errors->first('instagram') }}</span>
+                                    @endif
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="phone">{{ __('dict.phone') }}</label>
                                     <input type="text" name="phone" class="form-control" value="{{ $settings->phone }}"
                                            placeholder="Enter phone number">
+                                    @if ($errors->has('phone'))
+                                        <span class="text-danger">{{ $errors->first('phone') }}</span>
+                                    @endif
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="email">{{ __('dict.email') }}</label>
                                     <input type="email" name="email" class="form-control" value="{{ $settings->email }}"
                                            placeholder="Enter email address">
+                                    @if ($errors->has('email'))
+                                        <span class="text-danger">{{ $errors->first('email') }}</span>
+                                    @endif
                                 </div>
                             </div>
                         </div>
