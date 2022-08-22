@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Dashboad;
 use App\Http\Controllers\Controller;
 use App\Models\Setting;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
 use JetBrains\PhpStorm\NoReturn;
 use ReflectionClass;
 
@@ -17,15 +16,13 @@ class SettingController extends Controller
 //        $methods = (new ReflectionClass('App\Models\Setting'))->getMethods();
 //        dd($methods);
 
-        // dd($settings);
-
         $rules = [
             'logo' => 'nullable|mimes:jpg,jpeg,bmp,png|max:2048',
             'favicon' => 'nullable|mimes:jpg,jpeg,bmp,png|max:2048',
             'facebook' => 'nullable|string',
             'instagram' => 'nullable|string',
             'phone' => 'nullable|string',
-            'email' => 'required|email',
+            'email' => 'nullable|email',
         ];
 
         foreach (config('app.languages') as $key => $value) {
@@ -35,17 +32,14 @@ class SettingController extends Controller
         }
 
         $validated = $request->validate($rules);
-        Log::info("Site Settings has been validated: " . __METHOD__ ." at ".__LINE__);
 
         $settings->update($validated);
-        Log::info("Site Settings has been updated: " . __METHOD__ ." at ".__LINE__);
 
         if($request->file('logo')) {
             $fileName = time() . '_logo_' . $request->file('logo')->getClientOriginalName();
             $filePath = $request->file('logo')->storeAs('uploads/logo', $fileName, 'public');
             $logo = '/storage/' . $filePath;
             $settings->update(['logo' => $logo]);
-            Log::info("Site logo has been updated: " . __METHOD__ ." at ".__LINE__);
         }
 
         if($request->file('favicon')) {
@@ -53,7 +47,6 @@ class SettingController extends Controller
             $filePath = $request->file('favicon')->storeAs('uploads/favicon', $fileName, 'public');
             $favicon = '/storage/' . $filePath;
             $settings->update(['favicon' => $favicon]);
-            Log::info("Site favicon has been updated: " . __METHOD__ ." at ".__LINE__);
         }
 
         return redirect()->route('dashboard.settings');
