@@ -8,13 +8,13 @@
             </li>
 
             <li class="nav-item p-x-1">
-                <a class="nav-link" href="#">Dashboard</a>
+                <a class="nav-link" href="{{ route('dashboard.index') }}">Dashboard</a>
             </li>
             <li class="nav-item p-x-1">
-                <a class="nav-link" href="#">Users</a>
+                <a class="nav-link" href="{{ route('dashboard.users.index') }}">Users</a>
             </li>
             <li class="nav-item p-x-1">
-                <a class="nav-link" href="#">Settings</a>
+                <a class="nav-link" href="{{ route('dashboard.settings') }}">Settings</a>
             </li>
         </ul>
         <ul class="nav navbar-nav pull-left hidden-md-down">

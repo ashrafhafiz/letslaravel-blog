@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Dashboad;
+namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
-use JetBrains\PhpStorm\NoReturn;
-use ReflectionClass;
+use function config;
+use function redirect;
 
 class SettingController extends Controller
 {

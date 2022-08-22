@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\Dashboad\SettingController;
+use App\Http\Controllers\Dashboard\SettingController;
+use App\Http\Controllers\Dashboard\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -39,6 +40,10 @@ Route::group([
 
     Route::post('/settings/update/{settings}', [SettingController::class, 'update'])
         ->name('settings.update');
+
+    Route::resources([
+        'users' => UserController::class
+    ]);
 });
 
 Auth::routes();
