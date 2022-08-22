@@ -14,9 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('dashboard.index');
-});
+//Route::get('/', function () {
+//    return view('dashboard.index');
+//});
 
 //Route::prefix('dashboard')->group(function () {
 //    Route::get('/settings', function () {
@@ -26,8 +26,13 @@ Route::get('/', function () {
 
 Route::group([
     'prefix' => 'dashboard',
-    'as' => 'dashboard.'
+    'as' => 'dashboard.',
+    'middleware' => ['auth', 'CheckUserType']
 ], function () {
+    Route::get('/', function () {
+        return view('dashboard.index');
+    })->name('index');
+
     Route::get('/settings', function () {
         return view('dashboard.settings');
     })->name('settings');
@@ -35,3 +40,11 @@ Route::group([
     Route::post('/settings/update/{settings}', [SettingController::class, 'update'])
         ->name('settings.update');
 });
+
+Auth::routes();
+
+//Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/', function () {
+    return view('welcome');
+})->name('home');
