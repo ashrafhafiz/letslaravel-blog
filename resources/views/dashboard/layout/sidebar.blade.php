@@ -46,7 +46,7 @@
                 <a class="nav-link" href="widgets.html"><i class="icon-calculator"></i> Widgets <span class="tag tag-info">NEW</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="charts.html"><i class="icon-pie-chart"></i> Charts</a>
+                <a class="nav-link" href="{{ route('dashboard.users.index') }}"><i class="icon-user"></i> {{ trans('dict.users') }}</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('dashboard.settings') }}"><i class="icon-settings"></i> {{ trans('dict.settings') }}</a>

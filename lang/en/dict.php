@@ -2,6 +2,7 @@
 
 return [
     'settings' => 'Settings',
+    'users' => 'Users',
     'logo' => 'Site Logo',
     'current_logo' => 'Current Logo',
     'favicon' => 'Favicon',
@@ -14,4 +15,8 @@ return [
     'desc' => 'Description',
     'address' => 'Physical Address',
     'user_name' => 'User Name',
+    'delete_user' => 'Delete User',
+    'warning_user' => 'Delete Selected, Are you sure?',
+    'submit' => 'Submit',
+    'close' => 'Close',
 ];

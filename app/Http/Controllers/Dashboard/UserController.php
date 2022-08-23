@@ -14,8 +14,6 @@ class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
     {
@@ -23,13 +21,24 @@ class UserController extends Controller
             $data = User::select('*');
             return Datatables::of($data)
                 ->addIndexColumn()
+//                ->addColumn('action', function ($row) {
+//                    return $btn = '
+//                    <a href="' . route('dashboard.users.edit', $row->id) . '" class="edit btn btn-success btn-sm m-x-1" style="border-radius: 3px;" ><i class="fa fa-edit"></i></a><a
+//                    id="deleteBtn" data-id="' . $row->id . '" class="edit btn btn-danger btn-sm" style="border-radius: 3px;" data-toggle="modal"
+//                    data-target="#deleteModal"><i class="fa fa-trash"></i></a></div>';
+//                })
                 ->addColumn('action', function ($row) {
                     return $btn = '
-                    <a href=""' . route('dashboard.users.edit', $row->id) . '" class="edit btn btn-success btn-sm" ><i class="fa fa-edit"></i></a><a
-                    id="deleteBtn" data-id="' . $row->id . '" class="edit btn btn-danger btn-sm" data-toggle="modal"
-                    data-target="#deleteModal"><i class="fa fa-trash"></i></a>';
+                    <a href="' . route('dashboard.users.edit', $row->id) . '" class="edit btn btn-success btn-sm m-x-1" style="border-radius: 3px;" >
+                        <i class="fa fa-edit"></i>
+                    </a>
+                    <a id="deleteBtn" data-id="' . $row->id . '" class="edit btn btn-danger btn-sm" style="border-radius: 3px;" data-toggle="modal"
+                    data-target="#deleteModal">
+                        <i class="fa fa-trash"></i>
+                    </a>';
                 })
-                ->rowColumns(['action'])
+
+                ->rawColumns(['action'])
                 ->make(true);
         }
         return view('dashboard.users.index');
@@ -37,8 +46,6 @@ class UserController extends Controller
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
      */
     public function create()
     {
@@ -92,13 +99,14 @@ class UserController extends Controller
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        //dd($request->all());
+        if (is_numeric($request->id)) {
+            User::where('id', $request->id)->delete();
+        }
+        return redirect()->route('dashboard.users.index');
     }
 
     /**

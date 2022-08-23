@@ -58,6 +58,64 @@
         </div>
         <!--/.container-fluid-->
     </main>
+
+
+
+    <!-- delete_modal_grade -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog"
+         aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title"
+                        id="exampleModalLabel">
+                        {{ __('dict.delete_user') }}
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="{{ route('dashboard.users.destroy', 'test') }}" method="post">
+                        {{ method_field('Delete') }}
+                        @csrf
+                        {{ __('dict.warning_user') }}
+                        <input id="id" type="hidden" name="id" class="form-control"
+                               value="">
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary"
+                                    data-dismiss="modal">{{ __('dict.close') }}</button>
+                            <button type="submit"
+                                    class="btn btn-danger">{{ __('dict.submit') }}</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+{{--    modal    --}}
+{{--    <div id="deleteModal" class="modal" tabindex="-1" role="dialog">--}}
+{{--        <div class="modal-dialog" role="document">--}}
+{{--            <div class="modal-content">--}}
+{{--                <div class="modal-header">--}}
+{{--                    <h5 class="modal-title">Delete User</h5>--}}
+{{--                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">--}}
+{{--                        <span aria-hidden="true">&times;</span>--}}
+{{--                    </button>--}}
+{{--                </div>--}}
+{{--                <div class="modal-body">--}}
+{{--                    <p>Are you sure you want to delete the user?</p>--}}
+{{--                </div>--}}
+{{--                <div class="modal-footer">--}}
+{{--                    <button type="button" class="btn btn-primary">Delete</button>--}}
+{{--                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
 @endsection
 
 @push('javascripts')
@@ -92,6 +150,11 @@
                 ]
             });
 
+        });
+
+        $('#data-table tbody').on('click', '#deleteBtn', function (){
+            var id = $(this).attr('data-id');
+            $('#deleteModal #id').val(id)
         });
     </script>
 @endpush
