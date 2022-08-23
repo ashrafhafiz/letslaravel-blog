@@ -13,4 +13,5 @@ return [
     'title' => 'Title',
     'desc' => 'Description',
     'address' => 'Physical Address',
+    'user_name' => 'User Name',
 ];

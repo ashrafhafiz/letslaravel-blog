@@ -44,6 +44,9 @@ Route::group([
     Route::resources([
         'users' => UserController::class
     ]);
+
+    Route::get('/users/get_all', [UserController::class, 'getAllUsers'])
+        ->name('users.get_all');
 });
 
 Auth::routes();

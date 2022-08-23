@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\Http\Controllers\Controller;
+// use Datatables;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use Yajra\DataTables\Facades\DataTables;
+
 
 class UserController extends Controller
 {
@@ -12,8 +17,21 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        if ($request->ajax()) {
+            $data = User::select('*');
+            return Datatables::of($data)
+                ->addIndexColumn()
+                ->addColumn('action', function ($row) {
+                    return $btn = '
+                    <a href=""' . route('dashboard.users.edit', $row->id) . '" class="edit btn btn-success btn-sm" ><i class="fa fa-edit"></i></a><a
+                    id="deleteBtn" data-id="' . $row->id . '" class="edit btn btn-danger btn-sm" data-toggle="modal"
+                    data-target="#deleteModal"><i class="fa fa-trash"></i></a>';
+                })
+                ->rowColumns(['action'])
+                ->make(true);
+        }
         return view('dashboard.users.index');
     }
 
@@ -24,7 +42,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.users.create');
     }
 
     /**
@@ -81,5 +99,19 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * Get all users for yajra Datatable.
+     *
+     */
+    public function getAllUsers(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = User::select('*');
+            return Datatables::of($data)
+                ->addIndexColumn()
+                ->make(true);
+        }
     }
 }
