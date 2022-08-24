@@ -51,6 +51,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('dashboard.settings') }}"><i class="icon-settings"></i> {{ trans('dict.settings') }}</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('dashboard.categories.index') }}"><i class="icon-paper-clip"></i> {{ trans('dict.categories') }}</a>
+            </li>
             <li class="divider"></li>
             <li class="nav-title">
                 Editor Area

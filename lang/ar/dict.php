@@ -3,6 +3,7 @@
 return [
     'settings' => 'الاعدادات',
     'users' => 'قائمة المستخدمين',
+    'categories' => 'الفئات',
     'logo' => 'شعار الموقع',
     'current_logo' => 'شعار الموقع الحالي',
     'favicon' => 'Favicon',
@@ -19,5 +20,9 @@ return [
     'warning_user' => 'حذف مستخدم، هل أنت متأكد؟',
     'submit' => 'إرسال',
     'close' => 'إغلاق',
-
+    'delete_category' => 'حذف فئة',
+    'warning_category' => 'حذف فئة، هل أنت متأكد؟',
+    'category_image' => 'صورة الفئة',
+    'category_name' => 'إسم الفئة',
+    'category_desc' => 'وصف الفئة',
 ];

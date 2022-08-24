@@ -3,6 +3,7 @@
 return [
     'settings' => 'Settings',
     'users' => 'Users',
+    'categories' => 'Categories',
     'logo' => 'Site Logo',
     'current_logo' => 'Current Logo',
     'favicon' => 'Favicon',
@@ -16,7 +17,12 @@ return [
     'address' => 'Physical Address',
     'user_name' => 'User Name',
     'delete_user' => 'Delete User',
-    'warning_user' => 'Delete Selected, Are you sure?',
+    'warning_user' => 'Delete Selected User, Are you sure?',
     'submit' => 'Submit',
     'close' => 'Close',
+    'delete_category' => 'Delete Category',
+    'warning_category' => 'Delete Selected Category, Are you sure?',
+    'category_image' => 'Category Image',
+    'category_name' => 'Category Name',
+    'category_desc' => 'Category Description',
 ];

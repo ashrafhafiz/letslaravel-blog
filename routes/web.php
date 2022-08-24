@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Dashboard\CategoryController;
 use App\Http\Controllers\Dashboard\SettingController;
 use App\Http\Controllers\Dashboard\UserController;
 use Illuminate\Support\Facades\Route;
@@ -42,7 +43,8 @@ Route::group([
         ->name('settings.update');
 
     Route::resources([
-        'users' => UserController::class
+        'users' => UserController::class,
+        'categories' => CategoryController::class
     ]);
 
     Route::get('/users/get_all', [UserController::class, 'getAllUsers'])
