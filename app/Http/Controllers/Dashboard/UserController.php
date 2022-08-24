@@ -37,7 +37,9 @@ class UserController extends Controller
                         <i class="fa fa-trash"></i>
                     </a>';
                 })
-
+                ->addColumn('status', function ($row) {
+                    return $row->status == null ? "Inactive" : ucwords($row->status);
+                })
                 ->rawColumns(['action'])
                 ->make(true);
         }
@@ -60,7 +62,16 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rules = [
+            'name' => 'required|string|min:2|max:255',
+            'email' => 'required|email|max:255|unique:users',
+            'status' => 'nullable|string',
+            'password' => 'required|min:8',
+        ];
+
+        $validated = $request->validate($rules);
+        User::create($validated);
+        return redirect()->route('dashboard.users.index');
     }
 
     /**
@@ -80,9 +91,11 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        //
+//        dd($user->toArray());
+        $data['user'] = $user;
+        return view('dashboard.users.edit', $data);
     }
 
     /**
@@ -92,9 +105,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        //
+        $user->update($request->all());
+        return redirect()->route('dashboard.users.index');
     }
 
     /**

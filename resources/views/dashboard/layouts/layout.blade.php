@@ -35,11 +35,11 @@
  -->
 
 <body class="navbar-fixed sidebar-nav fixed-nav">
-    @include('dashboard.layout.header')
-    @include('dashboard.layout.sidebar')
+    @include('dashboard.layouts.header')
+    @include('dashboard.layouts.sidebar')
     @yield('main')
-    @include('dashboard.layout.aside-menu')
-    @include('dashboard.layout.footer')
+    @include('dashboard.layouts.aside-menu')
+    @include('dashboard.layouts.footer')
 </body>
 
 </html>

@@ -35,7 +35,7 @@ Route::group([
     })->name('index');
 
     Route::get('/settings', function () {
-        return view('dashboard.settings');
+        return view('dashboard.settings.index');
     })->name('settings');
 
     Route::post('/settings/update/{settings}', [SettingController::class, 'update'])
