@@ -80,19 +80,14 @@
                                 </div>
 
                             </div>
-                        </div>
-
-                    </div>
-                    <!--/row-->
-
-                    <div class="row">
-                        <div class="card">
                             <div class="card-footer">
                                 <button class="btn btn-primary" type="submit">Submit</button>
                                 <a class="btn btn-danger" href="{{url()->previous()}}">Cancel</a>
                             </div>
                         </div>
+
                     </div>
+                    <!--/row-->
                 </form>
                 <!--/.row-->
 

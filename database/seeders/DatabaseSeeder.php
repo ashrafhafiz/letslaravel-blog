@@ -25,5 +25,7 @@ class DatabaseSeeder extends Seeder
          ]);
 
          \App\Models\User::factory(15)->create();
+        $this->call(CategoriesTableSeeder::class);
+        $this->call(CategoryTranslationsTableSeeder::class);
     }
 }

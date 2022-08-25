@@ -30,10 +30,14 @@ class CategoryController extends Controller
                         <i class="fa fa-trash"></i>
                     </a>';
                 })
-                ->addColumn('status', function ($row) {
-                    return $row->status == null ? "Inactive" : ucwords($row->status);
+                ->addColumn('name', function ($row) {
+                    return $row->translate(app()->getLocale())->name;
                 })
-                ->rawColumns(['action'])
+                ->addColumn('parent', function ($row) {
+                    $parent_category = Category::find($row->parent_category_id);
+                    return $row->parent_category_id == null ? "Major Category" : ($parent_category->translate(app()->getLocale())->name);
+                })
+                ->rawColumns(['action', 'name', 'parent'])
                 ->make(true);
         }
         return view('dashboard.categories.index');
@@ -55,6 +59,7 @@ class CategoryController extends Controller
     {
         $rules = [
             'image' => 'nullable|mimes:jpg,jpeg,bmp,png|max:2048',
+            'parent_category_id' => 'nullable',
         ];
 
         foreach (config('app.languages') as $key => $value) {
@@ -91,35 +96,33 @@ class CategoryController extends Controller
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Category $category)
     {
-        //
+        $data['category'] = $category;
+        $data['categories'] = Category::all();
+        return view('dashboard.categories.edit', $data);
     }
 
     /**
      * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        //
+        $user->update($request->all());
+        return redirect()->route('dashboard.users.index');
     }
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy(Request $request)
     {
-        //
+//         dd(Category::find($request->id)->allChildren()->get());
+        if (is_numeric($request->id)) {
+            Category::find($request->id)->children()->delete();
+            Category::find($request->id)->delete();
+        }
+        return redirect()->route('dashboard.categories.index');
     }
 }

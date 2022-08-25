@@ -6,20 +6,20 @@
 
         <!-- Breadcrumb -->
         <ol class="breadcrumb">
-            <li class="breadcrumb-item">Home</li>
-            <li class="breadcrumb-item active"><a href="{{ route('dashboard.index') }}">Dashboard</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('dashboard.categories.index') }}">Categories</a></li>
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('dashboard.index') }}">Dashboard</a></li>
+            <li class="breadcrumb-item active">Categories</li>
 
             <!-- Breadcrumb Menu-->
-            <li class="breadcrumb-menu">
-                <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-                    <a class="btn btn-secondary" href="#"><i class="icon-speech"></i></a>
-                    <a class="btn btn-secondary" href="{{ route('dashboard.index') }}"><i class="icon-graph"></i>
-                        &nbsp;Dashboard</a>
-                    <a class="btn btn-secondary" href="{{ route('dashboard.categories.index') }}"><i class="icon-settings"></i>
-                        &nbsp;Categories</a>
-                </div>
-            </li>
+            {{--            <li class="breadcrumb-menu">--}}
+            {{--                <div class="btn-group" role="group" aria-label="Button group with nested dropdown">--}}
+            {{--                    <a class="btn btn-secondary" href="#"><i class="icon-speech"></i></a>--}}
+            {{--                    <a class="btn btn-secondary" href="{{ route('dashboard.index') }}"><i class="icon-graph"></i>--}}
+            {{--                        &nbsp;Dashboard</a>--}}
+            {{--                    <a class="btn btn-secondary" href="{{ route('dashboard.categories.index') }}"><i class="icon-settings"></i>--}}
+            {{--                        &nbsp;Categories</a>--}}
+            {{--                </div>--}}
+            {{--            </li>--}}
         </ol>
 
         <div class="container-fluid">
@@ -93,28 +93,6 @@
         </div>
     </div>
 
-
-
-    {{--    modal    --}}
-    {{--    <div id="deleteModal" class="modal" tabindex="-1" role="dialog">--}}
-    {{--        <div class="modal-dialog" role="document">--}}
-    {{--            <div class="modal-content">--}}
-    {{--                <div class="modal-header">--}}
-    {{--                    <h5 class="modal-title">Delete User</h5>--}}
-    {{--                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">--}}
-    {{--                        <span aria-hidden="true">&times;</span>--}}
-    {{--                    </button>--}}
-    {{--                </div>--}}
-    {{--                <div class="modal-body">--}}
-    {{--                    <p>Are you sure you want to delete the category?</p>--}}
-    {{--                </div>--}}
-    {{--                <div class="modal-footer">--}}
-    {{--                    <button type="button" class="btn btn-primary">Delete</button>--}}
-    {{--                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>--}}
-    {{--                </div>--}}
-    {{--            </div>--}}
-    {{--        </div>--}}
-    {{--    </div>--}}
 @endsection
 
 @push('javascripts')

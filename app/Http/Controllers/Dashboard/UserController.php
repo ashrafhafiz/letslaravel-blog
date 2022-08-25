@@ -124,7 +124,7 @@ class UserController extends Controller
 
     /**
      * Get all users for yajra Datatable.
-     *
+     * Not working now
      */
     public function getAllUsers(Request $request)
     {
