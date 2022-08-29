@@ -8,7 +8,7 @@
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="/">{{ __('dict.home') }}</a></li>
             <li class="breadcrumb-item"><a href="{{ route('dashboard.index') }}">{{ __('dict.dashboard') }}</a></li>
-            <li class="breadcrumb-item active"><strong>{{ __('dict.categories') }}</strong></li>
+            <li class="breadcrumb-item active"><strong>{{ __('dict.posts') }}</strong></li>
 
             <!-- Breadcrumb Menu-->
             {{-- <li class="breadcrumb-menu"> --}}
@@ -16,8 +16,8 @@
             {{-- <a class="btn btn-secondary" href="#"><i class="icon-speech"></i></a> --}}
             {{-- <a class="btn btn-secondary" href="{{ route('dashboard.index') }}"><i class="icon-graph"></i> --}}
             {{-- &nbsp;Dashboard</a> --}}
-            {{-- <a class="btn btn-secondary" href="{{ route('dashboard.categories.index') }}"><i class="icon-settings"></i> --}}
-            {{-- &nbsp;Categories</a> --}}
+            {{-- <a class="btn btn-secondary" href="{{ route('dashboard.posts.index') }}"><i class="icon-settings"></i> --}}
+            {{-- &nbsp;posts</a> --}}
             {{-- </div> --}}
             {{-- </li> --}}
         </ol>
@@ -28,21 +28,20 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-header d-flex align-items-center">
-                            <h3 class="d-inline-block">Categories Table</h3>
+                            <h3 class="d-inline-block">{{ __('dict.posts_list') }}</h3>
                             <div class="d-inline-block pull-left">
-                                <a href="{{ route('dashboard.categories.create') }}" class="btn btn-primary"
-                                    style="margin-top: 0;">Create New Category</a>
+                                <a href="{{ route('dashboard.posts.create') }}" class="btn btn-primary"
+                                    style="margin-top: 0;">{{ __('dict.create_new_post') }}</a>
                             </div>
                         </div>
                         <div class="card-block">
                             <table class="table table-bordered table-striped" id="data-table">
                                 <thead>
                                     <tr>
-                                        <th class="pull-right">id</th>
-                                        <th>Name</th>
-                                        <th>Description</th>
-                                        <th>Parent</th>
-                                        <th>action</th>
+                                        <th class="pull-right">{{ __('dict.id') }}</th>
+                                        <th>{{ __('dict.post_title') }}</th>
+                                        <th>{{ __('dict.description') }}</th>
+                                        <th>{{ __('dict.actions') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -67,17 +66,17 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title" id="exampleModalLabel">
-                        {{ __('dict.delete_category') }}
+                        {{ __('dict.delete_post') }}
                     </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ route('dashboard.categories.destroy', 'test') }}" method="post">
+                    <form action="{{ route('dashboard.posts.destroy', 'test') }}" method="post">
                         {{ method_field('Delete') }}
                         @csrf
-                        {{ __('dict.warning_category') }}
+                        {{ __('dict.warning_post') }}
                         <input id="id" type="hidden" name="id" class="form-control" value="">
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary"
@@ -97,22 +96,18 @@
             var table = $('#data-table').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{ route('dashboard.categories.index') }}",
+                ajax: "{{ route('dashboard.posts.index') }}",
                 columns: [{
                         data: 'id',
                         name: 'id'
                     },
                     {
-                        data: 'name',
-                        name: 'name'
+                        data: 'title',
+                        name: 'title'
                     },
                     {
-                        data: 'desc',
-                        name: 'desc'
-                    },
-                    {
-                        data: 'parent',
-                        name: 'parent',
+                        data: 'shortDesc',
+                        name: 'shortDesc'
                     },
                     {
                         data: 'action',

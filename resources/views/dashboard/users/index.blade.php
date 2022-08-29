@@ -6,12 +6,12 @@
 
         <!-- Breadcrumb -->
         <ol class="breadcrumb">
-            <li class="breadcrumb-item">Home</li>
-            <li class="breadcrumb-item active"><a href="{{ route('dashboard.index') }}">Dashboard</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('dashboard.users.index') }}">Users</a></li>
+            <li class="breadcrumb-item"><a href="/">{{ __('dict.home') }}</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('dashboard.index') }}">{{ __('dict.dashboard') }}</a></li>
+            <li class="breadcrumb-item active"><strong>{{ __('dict.users') }}</strong></li>
 
             <!-- Breadcrumb Menu-->
-            <li class="breadcrumb-menu">
+            {{-- <li class="breadcrumb-menu">
                 <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
                     <a class="btn btn-secondary" href="#"><i class="icon-speech"></i></a>
                     <a class="btn btn-secondary" href="{{ route('dashboard.index') }}"><i class="icon-graph"></i>
@@ -19,7 +19,7 @@
                     <a class="btn btn-secondary" href="{{ route('dashboard.users.index') }}"><i class="icon-settings"></i>
                         &nbsp;Users</a>
                 </div>
-            </li>
+            </li> --}}
         </ol>
 
         <div class="container-fluid">
@@ -62,13 +62,12 @@
 
 
     <!-- delete_modal_grade -->
-    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog"
-         aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title"
-                        id="exampleModalLabel">
+                    <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title" id="exampleModalLabel">
                         {{ __('dict.delete_user') }}
                     </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -80,13 +79,11 @@
                         {{ method_field('Delete') }}
                         @csrf
                         {{ __('dict.warning_user') }}
-                        <input id="id" type="hidden" name="id" class="form-control"
-                               value="">
+                        <input id="id" type="hidden" name="id" class="form-control" value="">
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary"
-                                    data-dismiss="modal">{{ __('dict.close') }}</button>
-                            <button type="submit"
-                                    class="btn btn-danger">{{ __('dict.submit') }}</button>
+                                data-dismiss="modal">{{ __('dict.close') }}</button>
+                            <button type="submit" class="btn btn-danger">{{ __('dict.submit') }}</button>
                         </div>
                     </form>
                 </div>
@@ -96,26 +93,26 @@
 
 
 
-{{--    modal    --}}
-{{--    <div id="deleteModal" class="modal" tabindex="-1" role="dialog">--}}
-{{--        <div class="modal-dialog" role="document">--}}
-{{--            <div class="modal-content">--}}
-{{--                <div class="modal-header">--}}
-{{--                    <h5 class="modal-title">Delete User</h5>--}}
-{{--                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">--}}
-{{--                        <span aria-hidden="true">&times;</span>--}}
-{{--                    </button>--}}
-{{--                </div>--}}
-{{--                <div class="modal-body">--}}
-{{--                    <p>Are you sure you want to delete the user?</p>--}}
-{{--                </div>--}}
-{{--                <div class="modal-footer">--}}
-{{--                    <button type="button" class="btn btn-primary">Delete</button>--}}
-{{--                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </div>--}}
+    {{-- modal --}}
+    {{-- <div id="deleteModal" class="modal" tabindex="-1" role="dialog"> --}}
+    {{-- <div class="modal-dialog" role="document"> --}}
+    {{-- <div class="modal-content"> --}}
+    {{-- <div class="modal-header"> --}}
+    {{-- <h5 class="modal-title">Delete User</h5> --}}
+    {{-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"> --}}
+    {{-- <span aria-hidden="true">&times;</span> --}}
+    {{-- </button> --}}
+    {{-- </div> --}}
+    {{-- <div class="modal-body"> --}}
+    {{-- <p>Are you sure you want to delete the user?</p> --}}
+    {{-- </div> --}}
+    {{-- <div class="modal-footer"> --}}
+    {{-- <button type="button" class="btn btn-primary">Delete</button> --}}
+    {{-- <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button> --}}
+    {{-- </div> --}}
+    {{-- </div> --}}
+    {{-- </div> --}}
+    {{-- </div> --}}
 @endsection
 
 @push('javascripts')
@@ -152,7 +149,7 @@
 
         });
 
-        $('#data-table tbody').on('click', '#deleteBtn', function (){
+        $('#data-table tbody').on('click', '#deleteBtn', function() {
             var id = $(this).attr('data-id');
             $('#deleteModal #id').val(id)
         });

@@ -6,19 +6,17 @@
 
         <!-- Breadcrumb -->
         <ol class="breadcrumb">
-            <li class="breadcrumb-item">Home</li>
-            <li class="breadcrumb-item"><a href="#">Admin</a>
-            </li>
-            <li class="breadcrumb-item active">Dashboard</li>
+            <li class="breadcrumb-item"><a href="/">{{ __('dict.home') }}</a></li>
+            <li class="breadcrumb-item active"><strong>{{ __('dict.dashboard') }}</strong></li>
 
             <!-- Breadcrumb Menu-->
-            <li class="breadcrumb-menu">
+            {{-- <li class="breadcrumb-menu">
                 <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
                     <a class="btn btn-secondary" href="#"><i class="icon-speech"></i></a>
                     <a class="btn btn-secondary" href="./"><i class="icon-graph"></i> &nbsp;Dashboard</a>
                     <a class="btn btn-secondary" href="#"><i class="icon-settings"></i> &nbsp;Settings</a>
                 </div>
-            </li>
+            </li> --}}
         </ol>
 
         <div class="container-fluid">
@@ -29,7 +27,8 @@
                         <div class="card card-inverse card-primary">
                             <div class="card-block p-b-0">
                                 <div class="btn-group pull-left">
-                                    <button type="button" class="btn btn-transparent active dropdown-toggle p-a-0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <button type="button" class="btn btn-transparent active dropdown-toggle p-a-0"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <i class="icon-settings"></i>
                                     </button>
                                     <div class="dropdown-menu dropdown-menu-right">
@@ -68,7 +67,8 @@
                         <div class="card card-inverse card-warning">
                             <div class="card-block p-b-0">
                                 <div class="btn-group pull-left">
-                                    <button type="button" class="btn btn-transparent active dropdown-toggle p-a-0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <button type="button" class="btn btn-transparent active dropdown-toggle p-a-0"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <i class="icon-settings"></i>
                                     </button>
                                     <div class="dropdown-menu dropdown-menu-right">
@@ -91,7 +91,8 @@
                         <div class="card card-inverse card-danger">
                             <div class="card-block p-b-0">
                                 <div class="btn-group pull-left">
-                                    <button type="button" class="btn btn-transparent active dropdown-toggle p-a-0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <button type="button" class="btn btn-transparent active dropdown-toggle p-a-0"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <i class="icon-settings"></i>
                                     </button>
                                     <div class="dropdown-menu dropdown-menu-right">
@@ -134,7 +135,8 @@
                                         </label>
                                     </div>
                                     <div class="btn-group hidden-sm-down" role="group" aria-label="Second group">
-                                        <button type="button" class="btn btn-primary"><i class="icon-cloud-download"></i>
+                                        <button type="button" class="btn btn-primary"><i
+                                                class="icon-cloud-download"></i>
                                         </button>
                                     </div>
                                 </div>
@@ -149,27 +151,32 @@
                             <li>
                                 <div class="text-muted">Visits</div>
                                 <strong>29.703 Users (40%)</strong>
-                                <progress class="progress progress-xs progress-success" value="40" max="100">40%</progress>
+                                <progress class="progress progress-xs progress-success" value="40"
+                                    max="100">40%</progress>
                             </li>
                             <li class="hidden-sm-down">
                                 <div class="text-muted">Unique</div>
                                 <strong>24.093 Unique Users (20%)</strong>
-                                <progress class="progress progress-xs progress-info" value="20" max="100">20%</progress>
+                                <progress class="progress progress-xs progress-info" value="20"
+                                    max="100">20%</progress>
                             </li>
                             <li>
                                 <div class="text-muted">Pageviews</div>
                                 <strong>78.706 Views (60%)</strong>
-                                <progress class="progress progress-xs progress-warning" value="60" max="100">60%</progress>
+                                <progress class="progress progress-xs progress-warning" value="60"
+                                    max="100">60%</progress>
                             </li>
                             <li class="hidden-sm-down">
                                 <div class="text-muted">New Users</div>
                                 <strong>22.123 Users (80%)</strong>
-                                <progress class="progress progress-xs progress-danger" value="80" max="100">80%</progress>
+                                <progress class="progress progress-xs progress-danger" value="80"
+                                    max="100">80%</progress>
                             </li>
                             <li class="hidden-sm-down">
                                 <div class="text-muted">Bounce Rate</div>
                                 <strong>40.15%</strong>
-                                <progress class="progress progress-xs progress-primary" value="40" max="100">40%</progress>
+                                <progress class="progress progress-xs progress-primary" value="40"
+                                    max="100">40%</progress>
                             </li>
                         </ul>
                     </div>
@@ -280,7 +287,8 @@
                                                     <br>
                                                     <strong class="h4">9,123</strong>
                                                     <div class="chart-wrapper">
-                                                        <canvas id="sparkline-chart-1" width="100" height="30"></canvas>
+                                                        <canvas id="sparkline-chart-1" width="100"
+                                                            height="30"></canvas>
                                                     </div>
                                                 </div>
                                             </div>
@@ -291,7 +299,8 @@
                                                     <br>
                                                     <strong class="h4">22,643</strong>
                                                     <div class="chart-wrapper">
-                                                        <canvas id="sparkline-chart-2" width="100" height="30"></canvas>
+                                                        <canvas id="sparkline-chart-2" width="100"
+                                                            height="30"></canvas>
                                                     </div>
                                                 </div>
                                             </div>
@@ -305,8 +314,10 @@
                                                     Monday
                                                 </div>
                                                 <div class="bars">
-                                                    <progress class="progress progress-xs progress-info" value="34" max="100" style="margin-bottom: 2px;">34%</progress>
-                                                    <progress class="progress progress-xs progress-danger m-a-0" value="78" max="100">78%</progress>
+                                                    <progress class="progress progress-xs progress-info" value="34"
+                                                        max="100" style="margin-bottom: 2px;">34%</progress>
+                                                    <progress class="progress progress-xs progress-danger m-a-0"
+                                                        value="78" max="100">78%</progress>
                                                 </div>
                                             </li>
                                             <li>
@@ -314,8 +325,10 @@
                                                     Tuesday
                                                 </div>
                                                 <div class="bars">
-                                                    <progress class="progress progress-xs progress-info" value="56" max="100" style="margin-bottom: 2px;">56%</progress>
-                                                    <progress class="progress progress-xs progress-danger m-a-0" value="94" max="100">94%</progress>
+                                                    <progress class="progress progress-xs progress-info" value="56"
+                                                        max="100" style="margin-bottom: 2px;">56%</progress>
+                                                    <progress class="progress progress-xs progress-danger m-a-0"
+                                                        value="94" max="100">94%</progress>
                                                 </div>
                                             </li>
                                             <li>
@@ -323,8 +336,10 @@
                                                     Wednesday
                                                 </div>
                                                 <div class="bars">
-                                                    <progress class="progress progress-xs progress-info" value="12" max="100" style="margin-bottom: 2px;">12%</progress>
-                                                    <progress class="progress progress-xs progress-danger m-a-0" value="67" max="100">67%</progress>
+                                                    <progress class="progress progress-xs progress-info" value="12"
+                                                        max="100" style="margin-bottom: 2px;">12%</progress>
+                                                    <progress class="progress progress-xs progress-danger m-a-0"
+                                                        value="67" max="100">67%</progress>
                                                 </div>
                                             </li>
                                             <li>
@@ -332,8 +347,10 @@
                                                     Thursday
                                                 </div>
                                                 <div class="bars">
-                                                    <progress class="progress progress-xs progress-info" value="43" max="100" style="margin-bottom: 2px;">43%</progress>
-                                                    <progress class="progress progress-xs progress-danger m-a-0" value="91" max="100">91%</progress>
+                                                    <progress class="progress progress-xs progress-info" value="43"
+                                                        max="100" style="margin-bottom: 2px;">43%</progress>
+                                                    <progress class="progress progress-xs progress-danger m-a-0"
+                                                        value="91" max="100">91%</progress>
                                                 </div>
                                             </li>
                                             <li>
@@ -341,8 +358,10 @@
                                                     Friday
                                                 </div>
                                                 <div class="bars">
-                                                    <progress class="progress progress-xs progress-info" value="22" max="100" style="margin-bottom: 2px;">22%</progress>
-                                                    <progress class="progress progress-xs progress-danger m-a-0" value="73" max="100">73%</progress>
+                                                    <progress class="progress progress-xs progress-info" value="22"
+                                                        max="100" style="margin-bottom: 2px;">22%</progress>
+                                                    <progress class="progress progress-xs progress-danger m-a-0"
+                                                        value="73" max="100">73%</progress>
                                                 </div>
                                             </li>
                                             <li>
@@ -350,8 +369,10 @@
                                                     Saturday
                                                 </div>
                                                 <div class="bars">
-                                                    <progress class="progress progress-xs progress-info" value="53" max="100" style="margin-bottom: 2px;">53%</progress>
-                                                    <progress class="progress progress-xs progress-danger m-a-0" value="82" max="100">82%</progress>
+                                                    <progress class="progress progress-xs progress-info" value="53"
+                                                        max="100" style="margin-bottom: 2px;">53%</progress>
+                                                    <progress class="progress progress-xs progress-danger m-a-0"
+                                                        value="82" max="100">82%</progress>
                                                 </div>
                                             </li>
                                             <li>
@@ -359,8 +380,10 @@
                                                     Sunday
                                                 </div>
                                                 <div class="bars">
-                                                    <progress class="progress progress-xs progress-info" value="9" max="100" style="margin-bottom: 2px;">9%</progress>
-                                                    <progress class="progress progress-xs progress-danger m-a-0" value="69" max="100">69%</progress>
+                                                    <progress class="progress progress-xs progress-info" value="9"
+                                                        max="100" style="margin-bottom: 2px;">9%</progress>
+                                                    <progress class="progress progress-xs progress-danger m-a-0"
+                                                        value="69" max="100">69%</progress>
                                                 </div>
                                             </li>
                                             <li class="legend">
@@ -380,7 +403,8 @@
                                                     <br>
                                                     <strong class="h4">78,623</strong>
                                                     <div class="chart-wrapper">
-                                                        <canvas id="sparkline-chart-3" width="100" height="30"></canvas>
+                                                        <canvas id="sparkline-chart-3" width="100"
+                                                            height="30"></canvas>
                                                     </div>
                                                 </div>
                                             </div>
@@ -391,7 +415,8 @@
                                                     <br>
                                                     <strong class="h4">49,123</strong>
                                                     <div class="chart-wrapper">
-                                                        <canvas id="sparkline-chart-4" width="100" height="30"></canvas>
+                                                        <canvas id="sparkline-chart-4" width="100"
+                                                            height="30"></canvas>
                                                     </div>
                                                 </div>
                                             </div>
@@ -405,7 +430,8 @@
                                                 <span class="title">Male</span>
                                                 <span class="value">43%</span>
                                                 <div class="bars">
-                                                    <progress class="progress progress-xs progress-warning m-a-0" value="43" max="100">43%</progress>
+                                                    <progress class="progress progress-xs progress-warning m-a-0"
+                                                        value="43" max="100">43%</progress>
                                                 </div>
                                             </li>
                                             <li>
@@ -413,7 +439,8 @@
                                                 <span class="title">Female</span>
                                                 <span class="value">37%</span>
                                                 <div class="bars">
-                                                    <progress class="progress progress-xs progress-warning m-a-0" value="37" max="100">37%</progress>
+                                                    <progress class="progress progress-xs progress-warning m-a-0"
+                                                        value="37" max="100">37%</progress>
                                                 </div>
                                             </li>
                                             <li class="divider"></li>
@@ -424,7 +451,8 @@
                                                     <span class="text-muted small">(56%)</span>
                                                 </span>
                                                 <div class="bars">
-                                                    <progress class="progress progress-xs progress-success m-a-0" value="56" max="100">56%</progress>
+                                                    <progress class="progress progress-xs progress-success m-a-0"
+                                                        value="56" max="100">56%</progress>
                                                 </div>
                                             </li>
                                             <li>
@@ -434,7 +462,8 @@
                                                     <span class="text-muted small">(15%)</span>
                                                 </span>
                                                 <div class="bars">
-                                                    <progress class="progress progress-xs progress-success m-a-0" value="15" max="100">15%</progress>
+                                                    <progress class="progress progress-xs progress-success m-a-0"
+                                                        value="15" max="100">15%</progress>
                                                 </div>
                                             </li>
                                             <li>
@@ -444,7 +473,8 @@
                                                     <span class="text-muted small">(11%)</span>
                                                 </span>
                                                 <div class="bars">
-                                                    <progress class="progress progress-xs progress-success m-a-0" value="11" max="100">11%</progress>
+                                                    <progress class="progress progress-xs progress-success m-a-0"
+                                                        value="11" max="100">11%</progress>
                                                 </div>
                                             </li>
                                             <li>
@@ -454,11 +484,14 @@
                                                     <span class="text-muted small">(8%)</span>
                                                 </span>
                                                 <div class="bars">
-                                                    <progress class="progress progress-xs progress-success m-a-0" value="8" max="100">8%</progress>
+                                                    <progress class="progress progress-xs progress-success m-a-0"
+                                                        value="8" max="100">8%</progress>
                                                 </div>
                                             </li>
                                             <li class="divider text-xs-center">
-                                                <button type="button" class="btn btn-sm btn-link text-muted" data-toggle="tooltip" data-placement="top" title="" data-original-title="show more"><i class="icon-options"></i>
+                                                <button type="button" class="btn btn-sm btn-link text-muted"
+                                                    data-toggle="tooltip" data-placement="top" title=""
+                                                    data-original-title="show more"><i class="icon-options"></i>
                                                 </button>
                                             </li>
                                         </ul>
@@ -472,7 +505,8 @@
                                                     <br>
                                                     <strong class="h4">23%</strong>
                                                     <div class="chart-wrapper">
-                                                        <canvas id="sparkline-chart-5" width="100" height="30"></canvas>
+                                                        <canvas id="sparkline-chart-5" width="100"
+                                                            height="30"></canvas>
                                                     </div>
                                                 </div>
                                             </div>
@@ -483,7 +517,8 @@
                                                     <br>
                                                     <strong class="h4">5%</strong>
                                                     <div class="chart-wrapper">
-                                                        <canvas id="sparkline-chart-6" width="100" height="30"></canvas>
+                                                        <canvas id="sparkline-chart-6" width="100"
+                                                            height="30"></canvas>
                                                     </div>
                                                 </div>
                                             </div>
@@ -503,7 +538,8 @@
                                                     <strong>1.924</strong>
                                                 </div>
                                                 <div class="actions">
-                                                    <button type="button" class="btn btn-link text-muted"><i class="icon-settings"></i>
+                                                    <button type="button" class="btn btn-link text-muted"><i
+                                                            class="icon-settings"></i>
                                                     </button>
                                                 </div>
                                             </li>
@@ -518,7 +554,8 @@
                                                     <strong>1.224</strong>
                                                 </div>
                                                 <div class="actions">
-                                                    <button type="button" class="btn btn-link text-muted"><i class="icon-settings"></i>
+                                                    <button type="button" class="btn btn-link text-muted"><i
+                                                            class="icon-settings"></i>
                                                     </button>
                                                 </div>
                                             </li>
@@ -533,7 +570,8 @@
                                                     <strong>1.163</strong>
                                                 </div>
                                                 <div class="actions">
-                                                    <button type="button" class="btn btn-link text-muted"><i class="icon-settings"></i>
+                                                    <button type="button" class="btn btn-link text-muted"><i
+                                                            class="icon-settings"></i>
                                                     </button>
                                                 </div>
                                             </li>
@@ -548,7 +586,8 @@
                                                     <strong>928</strong>
                                                 </div>
                                                 <div class="actions">
-                                                    <button type="button" class="btn btn-link text-muted"><i class="icon-settings"></i>
+                                                    <button type="button" class="btn btn-link text-muted"><i
+                                                            class="icon-settings"></i>
                                                     </button>
                                                 </div>
                                             </li>
@@ -563,7 +602,8 @@
                                                     <strong>893</strong>
                                                 </div>
                                                 <div class="actions">
-                                                    <button type="button" class="btn btn-link text-muted"><i class="icon-settings"></i>
+                                                    <button type="button" class="btn btn-link text-muted"><i
+                                                            class="icon-settings"></i>
                                                     </button>
                                                 </div>
                                             </li>
@@ -578,7 +618,8 @@
                                                     <strong>121.924</strong>
                                                 </div>
                                                 <div class="actions">
-                                                    <button type="button" class="btn btn-link text-muted"><i class="icon-settings"></i>
+                                                    <button type="button" class="btn btn-link text-muted"><i
+                                                            class="icon-settings"></i>
                                                     </button>
                                                 </div>
                                             </li>
@@ -593,12 +634,15 @@
                                                     <strong>12.125</strong>
                                                 </div>
                                                 <div class="actions">
-                                                    <button type="button" class="btn btn-link text-muted"><i class="icon-settings"></i>
+                                                    <button type="button" class="btn btn-link text-muted"><i
+                                                            class="icon-settings"></i>
                                                     </button>
                                                 </div>
                                             </li>
                                             <li class="divider text-xs-center">
-                                                <button type="button" class="btn btn-sm btn-link text-muted" data-toggle="tooltip" data-placement="top" title="show more"><i class="icon-options"></i>
+                                                <button type="button" class="btn btn-sm btn-link text-muted"
+                                                    data-toggle="tooltip" data-placement="top" title="show more"><i
+                                                        class="icon-options"></i>
                                                 </button>
                                             </li>
                                         </ul>
@@ -606,230 +650,249 @@
                                     <!--/.col-->
                                 </div>
                                 <!--/.row-->
-                                <br/>
+                                <br />
                                 <table class="table table-hover table-outline m-b-0 hidden-sm-down">
                                     <thead class="thead-default">
-                                    <tr>
-                                        <th class="text-xs-center"><i class="icon-people"></i>
-                                        </th>
-                                        <th>User</th>
-                                        <th class="text-xs-center">Country</th>
-                                        <th>Usage</th>
-                                        <th class="text-xs-center">Payment Method</th>
-                                        <th>Activity</th>
-                                    </tr>
+                                        <tr>
+                                            <th class="text-xs-center"><i class="icon-people"></i>
+                                            </th>
+                                            <th>User</th>
+                                            <th class="text-xs-center">Country</th>
+                                            <th>Usage</th>
+                                            <th class="text-xs-center">Payment Method</th>
+                                            <th>Activity</th>
+                                        </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <td class="text-xs-center">
-                                            <div class="avatar">
-                                                <img src="{{ asset('assets/dashboard/img/avatars/1.jpg') }}" class="img-avatar" alt="admin@bootstrapmaster.com">
-                                                <span class="avatar-status tag-success"></span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div>Yiorgos Avraamu</div>
-                                            <div class="small text-muted">
-                                                <span>New</span>| Registered: Jan 1, 2015
-                                            </div>
-                                        </td>
-                                        <td class="text-xs-center">
-                                            <img src="{{ asset('assets/dashboard/img/flags/USA.png') }}" alt="USA" style="height:24px;">
-                                        </td>
-                                        <td>
-                                            <div class="clearfix">
-                                                <div class="pull-left">
-                                                    <strong>50%</strong>
+                                        <tr>
+                                            <td class="text-xs-center">
+                                                <div class="avatar">
+                                                    <img src="{{ asset('assets/dashboard/img/avatars/1.jpg') }}"
+                                                        class="img-avatar" alt="admin@bootstrapmaster.com">
+                                                    <span class="avatar-status tag-success"></span>
                                                 </div>
-                                                <div class="pull-left">
-                                                    <small class="text-muted">Jun 11, 2015 - Jul 10, 2015</small>
+                                            </td>
+                                            <td>
+                                                <div>Yiorgos Avraamu</div>
+                                                <div class="small text-muted">
+                                                    <span>New</span>| Registered: Jan 1, 2015
                                                 </div>
-                                            </div>
-                                            <progress class="progress progress-xs progress-success" value="50" max="100" style="margin:5px 0 0 0;">50%</progress>
-                                        </td>
-                                        <td class="text-xs-center">
-                                            <i class="fa fa-cc-mastercard" style="font-size:24px"></i>
-                                        </td>
-                                        <td>
-                                            <div class="small text-muted">Last login</div>
-                                            <strong>10 sec ago</strong>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-xs-center">
-                                            <div class="avatar">
-                                                <img src="{{ asset('assets/dashboard/img/avatars/2.jpg') }}" class="img-avatar" alt="admin@bootstrapmaster.com" >
-                                                <span class="avatar-status tag-danger"></span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div>Avram Tarasios</div>
-                                            <div class="small text-muted">
+                                            </td>
+                                            <td class="text-xs-center">
+                                                <img src="{{ asset('assets/dashboard/img/flags/USA.png') }}"
+                                                    alt="USA" style="height:24px;">
+                                            </td>
+                                            <td>
+                                                <div class="clearfix">
+                                                    <div class="pull-left">
+                                                        <strong>50%</strong>
+                                                    </div>
+                                                    <div class="pull-left">
+                                                        <small class="text-muted">Jun 11, 2015 - Jul 10, 2015</small>
+                                                    </div>
+                                                </div>
+                                                <progress class="progress progress-xs progress-success" value="50"
+                                                    max="100" style="margin:5px 0 0 0;">50%</progress>
+                                            </td>
+                                            <td class="text-xs-center">
+                                                <i class="fa fa-cc-mastercard" style="font-size:24px"></i>
+                                            </td>
+                                            <td>
+                                                <div class="small text-muted">Last login</div>
+                                                <strong>10 sec ago</strong>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-xs-center">
+                                                <div class="avatar">
+                                                    <img src="{{ asset('assets/dashboard/img/avatars/2.jpg') }}"
+                                                        class="img-avatar" alt="admin@bootstrapmaster.com">
+                                                    <span class="avatar-status tag-danger"></span>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div>Avram Tarasios</div>
+                                                <div class="small text-muted">
 
-                                                <span>Recurring</span>| Registered: Jan 1, 2015
-                                            </div>
-                                        </td>
-                                        <td class="text-xs-center">
-                                            <img src="{{ asset('assets/dashboard/img/flags/Brazil.png') }}" alt="Brazil" style="height:24px;" >
-                                        </td>
-                                        <td>
-                                            <div class="clearfix">
-                                                <div class="pull-left">
-                                                    <strong>10%</strong>
+                                                    <span>Recurring</span>| Registered: Jan 1, 2015
                                                 </div>
-                                                <div class="pull-left">
-                                                    <small class="text-muted">Jun 11, 2015 - Jul 10, 2015</small>
+                                            </td>
+                                            <td class="text-xs-center">
+                                                <img src="{{ asset('assets/dashboard/img/flags/Brazil.png') }}"
+                                                    alt="Brazil" style="height:24px;">
+                                            </td>
+                                            <td>
+                                                <div class="clearfix">
+                                                    <div class="pull-left">
+                                                        <strong>10%</strong>
+                                                    </div>
+                                                    <div class="pull-left">
+                                                        <small class="text-muted">Jun 11, 2015 - Jul 10, 2015</small>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <progress class="progress progress-xs progress-info" value="10" max="100" style="margin:5px 0 0 0;">10%</progress>
-                                        </td>
-                                        <td class="text-xs-center">
-                                            <i class="fa fa-cc-visa" style="font-size:24px"></i>
-                                        </td>
-                                        <td>
-                                            <div class="small text-muted">Last login</div>
-                                            <strong>5 minutes ago</strong>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-xs-center">
-                                            <div class="avatar">
-                                                <img src="{{ asset('assets/dashboard/img/avatars/3.jpg') }}" class="img-avatar" alt="admin@bootstrapmaster.com" >
-                                                <span class="avatar-status tag-warning"></span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div>Quintin Ed</div>
-                                            <div class="small text-muted">
-                                                <span>New</span>| Registered: Jan 1, 2015</div>
-                                        </td>
-                                        <td class="text-xs-center">
-                                            <img src="{{ asset('assets/dashboard/img/flags/India.png') }}" alt="India" style="height:24px;" >
-                                        </td>
-                                        <td>
-                                            <div class="clearfix">
-                                                <div class="pull-left">
-                                                    <strong>74%</strong>
+                                                <progress class="progress progress-xs progress-info" value="10"
+                                                    max="100" style="margin:5px 0 0 0;">10%</progress>
+                                            </td>
+                                            <td class="text-xs-center">
+                                                <i class="fa fa-cc-visa" style="font-size:24px"></i>
+                                            </td>
+                                            <td>
+                                                <div class="small text-muted">Last login</div>
+                                                <strong>5 minutes ago</strong>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-xs-center">
+                                                <div class="avatar">
+                                                    <img src="{{ asset('assets/dashboard/img/avatars/3.jpg') }}"
+                                                        class="img-avatar" alt="admin@bootstrapmaster.com">
+                                                    <span class="avatar-status tag-warning"></span>
                                                 </div>
-                                                <div class="pull-left">
-                                                    <small class="text-muted">Jun 11, 2015 - Jul 10, 2015</small>
+                                            </td>
+                                            <td>
+                                                <div>Quintin Ed</div>
+                                                <div class="small text-muted">
+                                                    <span>New</span>| Registered: Jan 1, 2015
                                                 </div>
-                                            </div>
-                                            <progress class="progress progress-xs progress-warning" value="74" max="100" style="margin:5px 0 0 0;">74%</progress>
-                                        </td>
-                                        <td class="text-xs-center">
-                                            <i class="fa fa-cc-stripe" style="font-size:24px"></i>
-                                        </td>
-                                        <td>
-                                            <div class="small text-muted">Last login</div>
-                                            <strong>1 hour ago</strong>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-xs-center">
-                                            <div class="avatar">
-                                                <img src="{{ asset('assets/dashboard/img/avatars/4.jpg') }}" class="img-avatar" alt="admin@bootstrapmaster.com" >
-                                                <span class="avatar-status tag-default"></span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div>Enéas Kwadwo</div>
-                                            <div class="small text-muted">
-                                                <span>New</span>| Registered: Jan 1, 2015
-                                            </div>
-                                        </td>
-                                        <td class="text-xs-center">
-                                            <img src="{{ asset('assets/dashboard/img/flags/France.png') }}" alt="France" style="height:24px;">
-                                        </td>
-                                        <td>
-                                            <div class="clearfix">
-                                                <div class="pull-left">
-                                                    <strong>98%</strong>
+                                            </td>
+                                            <td class="text-xs-center">
+                                                <img src="{{ asset('assets/dashboard/img/flags/India.png') }}"
+                                                    alt="India" style="height:24px;">
+                                            </td>
+                                            <td>
+                                                <div class="clearfix">
+                                                    <div class="pull-left">
+                                                        <strong>74%</strong>
+                                                    </div>
+                                                    <div class="pull-left">
+                                                        <small class="text-muted">Jun 11, 2015 - Jul 10, 2015</small>
+                                                    </div>
                                                 </div>
-                                                <div class="pull-left">
-                                                    <small class="text-muted">Jun 11, 2015 - Jul 10, 2015</small>
+                                                <progress class="progress progress-xs progress-warning" value="74"
+                                                    max="100" style="margin:5px 0 0 0;">74%</progress>
+                                            </td>
+                                            <td class="text-xs-center">
+                                                <i class="fa fa-cc-stripe" style="font-size:24px"></i>
+                                            </td>
+                                            <td>
+                                                <div class="small text-muted">Last login</div>
+                                                <strong>1 hour ago</strong>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-xs-center">
+                                                <div class="avatar">
+                                                    <img src="{{ asset('assets/dashboard/img/avatars/4.jpg') }}"
+                                                        class="img-avatar" alt="admin@bootstrapmaster.com">
+                                                    <span class="avatar-status tag-default"></span>
                                                 </div>
-                                            </div>
-                                            <progress class="progress progress-xs progress-danger" value="98" max="100" style="margin:5px 0 0 0;">98%</progress>
-                                        </td>
-                                        <td class="text-xs-center">
-                                            <i class="fa fa-paypal" style="font-size:24px"></i>
-                                        </td>
-                                        <td>
-                                            <div class="small text-muted">Last login</div>
-                                            <strong>Last month</strong>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-xs-center">
-                                            <div class="avatar">
-                                                <img src="{{ asset('assets/dashboard/img/avatars/5.jpg') }}" class="img-avatar" alt="admin@bootstrapmaster.com" >
-                                                <span class="avatar-status tag-success"></span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div>Agapetus Tadeáš</div>
-                                            <div class="small text-muted">
-                                                <span>New</span>| Registered: Jan 1, 2015
-                                            </div>
-                                        </td>
-                                        <td class="text-xs-center">
-                                            <img src="{{ asset('assets/dashboard/img/flags/Spain.png') }}" alt="Spain" style="height:24px;" >
-                                        </td>
-                                        <td>
-                                            <div class="clearfix">
-                                                <div class="pull-left">
-                                                    <strong>22%</strong>
+                                            </td>
+                                            <td>
+                                                <div>Enéas Kwadwo</div>
+                                                <div class="small text-muted">
+                                                    <span>New</span>| Registered: Jan 1, 2015
                                                 </div>
-                                                <div class="pull-left">
-                                                    <small class="text-muted">Jun 11, 2015 - Jul 10, 2015</small>
+                                            </td>
+                                            <td class="text-xs-center">
+                                                <img src="{{ asset('assets/dashboard/img/flags/France.png') }}"
+                                                    alt="France" style="height:24px;">
+                                            </td>
+                                            <td>
+                                                <div class="clearfix">
+                                                    <div class="pull-left">
+                                                        <strong>98%</strong>
+                                                    </div>
+                                                    <div class="pull-left">
+                                                        <small class="text-muted">Jun 11, 2015 - Jul 10, 2015</small>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <progress class="progress progress-xs progress-info" value="22" max="100" style="margin:5px 0 0 0;">22%</progress>
-                                        </td>
-                                        <td class="text-xs-center">
-                                            <i class="fa fa-google-wallet" style="font-size:24px"></i>
-                                        </td>
-                                        <td>
-                                            <div class="small text-muted">Last login</div>
-                                            <strong>Last week</strong>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-xs-center">
-                                            <div class="avatar">
-                                                <img src="{{ asset('assets/dashboard/img/avatars/6.jpg') }}" class="img-avatar" alt="admin@bootstrapmaster.com" >
-                                                <span class="avatar-status tag-danger"></span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div>Friderik Dávid</div>
-                                            <div class="small text-muted">
-                                                <span>New</span>| Registered: Jan 1, 2015
-                                            </div>
-                                        </td>
-                                        <td class="text-xs-center">
-                                            <img src="{{ asset('assets/dashboard/img/flags/Poland.png') }}" alt="Poland" style="height:24px;" >
-                                        </td>
-                                        <td>
-                                            <div class="clearfix">
-                                                <div class="pull-left">
-                                                    <strong>43%</strong>
+                                                <progress class="progress progress-xs progress-danger" value="98"
+                                                    max="100" style="margin:5px 0 0 0;">98%</progress>
+                                            </td>
+                                            <td class="text-xs-center">
+                                                <i class="fa fa-paypal" style="font-size:24px"></i>
+                                            </td>
+                                            <td>
+                                                <div class="small text-muted">Last login</div>
+                                                <strong>Last month</strong>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-xs-center">
+                                                <div class="avatar">
+                                                    <img src="{{ asset('assets/dashboard/img/avatars/5.jpg') }}"
+                                                        class="img-avatar" alt="admin@bootstrapmaster.com">
+                                                    <span class="avatar-status tag-success"></span>
                                                 </div>
-                                                <div class="pull-left">
-                                                    <small class="text-muted">Jun 11, 2015 - Jul 10, 2015</small>
+                                            </td>
+                                            <td>
+                                                <div>Agapetus Tadeáš</div>
+                                                <div class="small text-muted">
+                                                    <span>New</span>| Registered: Jan 1, 2015
                                                 </div>
-                                            </div>
-                                            <progress class="progress progress-xs progress-success" value="43" max="100" style="margin:5px 0 0 0;">43%</progress>
-                                        </td>
-                                        <td class="text-xs-center">
-                                            <i class="fa fa-cc-amex" style="font-size:24px"></i>
-                                        </td>
-                                        <td>
-                                            <div class="small text-muted">Last login</div>
-                                            <strong>Yesterday</strong>
-                                        </td>
-                                    </tr>
+                                            </td>
+                                            <td class="text-xs-center">
+                                                <img src="{{ asset('assets/dashboard/img/flags/Spain.png') }}"
+                                                    alt="Spain" style="height:24px;">
+                                            </td>
+                                            <td>
+                                                <div class="clearfix">
+                                                    <div class="pull-left">
+                                                        <strong>22%</strong>
+                                                    </div>
+                                                    <div class="pull-left">
+                                                        <small class="text-muted">Jun 11, 2015 - Jul 10, 2015</small>
+                                                    </div>
+                                                </div>
+                                                <progress class="progress progress-xs progress-info" value="22"
+                                                    max="100" style="margin:5px 0 0 0;">22%</progress>
+                                            </td>
+                                            <td class="text-xs-center">
+                                                <i class="fa fa-google-wallet" style="font-size:24px"></i>
+                                            </td>
+                                            <td>
+                                                <div class="small text-muted">Last login</div>
+                                                <strong>Last week</strong>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-xs-center">
+                                                <div class="avatar">
+                                                    <img src="{{ asset('assets/dashboard/img/avatars/6.jpg') }}"
+                                                        class="img-avatar" alt="admin@bootstrapmaster.com">
+                                                    <span class="avatar-status tag-danger"></span>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div>Friderik Dávid</div>
+                                                <div class="small text-muted">
+                                                    <span>New</span>| Registered: Jan 1, 2015
+                                                </div>
+                                            </td>
+                                            <td class="text-xs-center">
+                                                <img src="{{ asset('assets/dashboard/img/flags/Poland.png') }}"
+                                                    alt="Poland" style="height:24px;">
+                                            </td>
+                                            <td>
+                                                <div class="clearfix">
+                                                    <div class="pull-left">
+                                                        <strong>43%</strong>
+                                                    </div>
+                                                    <div class="pull-left">
+                                                        <small class="text-muted">Jun 11, 2015 - Jul 10, 2015</small>
+                                                    </div>
+                                                </div>
+                                                <progress class="progress progress-xs progress-success" value="43"
+                                                    max="100" style="margin:5px 0 0 0;">43%</progress>
+                                            </td>
+                                            <td class="text-xs-center">
+                                                <i class="fa fa-cc-amex" style="font-size:24px"></i>
+                                            </td>
+                                            <td>
+                                                <div class="small text-muted">Last login</div>
+                                                <strong>Yesterday</strong>
+                                            </td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -843,5 +906,4 @@
         </div>
         <!--/.container-fluid-->
     </main>
-
 @endsection

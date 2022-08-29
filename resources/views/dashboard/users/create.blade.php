@@ -38,8 +38,8 @@
                                 <div class="row">
                                     <div class="form-group col-md-6">
                                         <label for="facebook">{{ __('dict.user_name') }}</label>
-                                        <input type="text" name="name" class="form-control" value="{{ old('name') }}"
-                                               placeholder="Enter user name...">
+                                        <input type="text" name="name" class="form-control"
+                                            value="{{ old('name') }}" placeholder="Enter user name...">
                                         @if ($errors->has('name'))
                                             <span class="text-danger">{{ $errors->first('name') }}</span>
                                         @endif
@@ -48,7 +48,7 @@
                                     <div class="form-group col-md-6">
                                         <label for="email">{{ __('dict.email') }}</label>
                                         <input type="email" name="email" class="form-control" value=""
-                                               placeholder="Enter valid email...">
+                                            placeholder="Enter valid email...">
                                         @if ($errors->has('email'))
                                             <span class="text-danger">{{ $errors->first('email') }}</span>
                                         @endif
@@ -60,7 +60,7 @@
                                         <label for="status">{{ __('dict.status') }}</label>
                                         <select name="status" id="status" class="form-control">
                                             <option value="">Select Status...</option>
-                                            {{--                                        <option value="">Inactive</option>--}}
+                                            {{-- <option value="">Inactive</option> --}}
                                             <option value="admin">Admin</option>
                                             <option value="editor">Editor</option>
                                         </select>
@@ -72,7 +72,7 @@
                                     <div class="form-group col-md-6">
                                         <label for="password">{{ __('dict.password') }}</label>
                                         <input type="password" name="password" class="form-control" value=""
-                                               placeholder="Enter valid password...">
+                                            placeholder="Enter valid password...">
                                         @if ($errors->has('password'))
                                             <span class="text-danger">{{ $errors->first('password') }}</span>
                                         @endif
@@ -81,8 +81,8 @@
 
                             </div>
                             <div class="card-footer">
-                                <button class="btn btn-primary" type="submit">Submit</button>
-                                <a class="btn btn-danger" href="{{url()->previous()}}">Cancel</a>
+                                <button class="btn btn-primary" type="submit">{{ __('dict.submit') }}</button>
+                                <a class="btn btn-danger" href="{{ url()->previous() }}">{{ __('dict.cancel') }}</a>
                             </div>
                         </div>
 

@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\Dashboard\CategoryController;
-use App\Http\Controllers\Dashboard\SettingController;
-use App\Http\Controllers\Dashboard\UserController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Dashboard\PostController;
+use App\Http\Controllers\Dashboard\UserController;
+use App\Http\Controllers\Dashboard\SettingController;
+use App\Http\Controllers\Dashboard\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,7 +45,8 @@ Route::group([
 
     Route::resources([
         'users' => UserController::class,
-        'categories' => CategoryController::class
+        'categories' => CategoryController::class,
+        'posts' => PostController::class
     ]);
 
     Route::get('/users/get_all', [UserController::class, 'getAllUsers'])
