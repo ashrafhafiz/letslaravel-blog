@@ -18,6 +18,26 @@
             </li>
         </ul>
         <ul class="nav navbar-nav pull-left hidden-md-down">
+            {{--            --}}
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button"
+                   aria-haspopup="true" aria-expanded="false">
+                    <span class="hidden-md-down">{{ LaravelLocalization::getCurrentLocaleNative() }}</span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <div class="dropdown-header text-xs-center">
+                        <strong>Select Language</strong>
+                    </div>
+                    @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                        <a class="dropdown-item" rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                            <i class="fa fa-flag"></i>
+                            {{ $properties['native'] }}
+                            <span class="tag tag-danger">42</span>
+                        </a>
+                    @endforeach
+                </div>
+            </li>
+            {{--            --}}
             <li class="nav-item">
                 <a class="nav-link" href="#"><i class="icon-bell"></i><span class="tag tag-pill tag-danger">5</span></a>
             </li>

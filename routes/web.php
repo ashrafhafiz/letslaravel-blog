@@ -29,7 +29,7 @@ use Illuminate\Support\Facades\Route;
 Route::group([
     'prefix' => 'dashboard',
     'as' => 'dashboard.',
-    'middleware' => ['auth', 'CheckUserType']
+    'middleware' => ['auth', 'CheckUserType', 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
 ], function () {
     Route::get('/', function () {
         return view('dashboard.index');

@@ -1,64 +1,150 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+## Lessons learned in Category Model
+### Issue: Parent-Child relationship
+```php
+in App\Models\Category.php
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+protected string $parentColumn = 'parent_category_id';
 
-## About Laravel
+public function parent(): BelongsTo  
+{  
+  return $this->belongsTo(Category::class,$this->parentColumn);  
+}  
+  
+public function children(): HasMany  
+{  
+  return $this->hasMany(Category::class, $this->parentColumn);  
+}  
+  
+public function allChildren(): HasMany  
+{  
+  return $this->children()->with('allChildren');  
+}
+```
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### Issue: onDelete('cascade')  functionality is lost when using SoftDeletes.
+For someone that's here and using  `SoftDeletes`  on their models;  `onDelete('cascade')`  functionality is lost when using SoftDeletes. Options you could use in such a case are:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+1.  Using  [dyrynda/laravel-cascade-soft-deletes](https://github.com/michaeldyrynda/laravel-cascade-soft-deletes)  package to handle this for you.
+    This is the selected solution in this project:
+    ```
+    $ composer require dyrynda/laravel-cascade-soft-deletes
+    ```
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+    ```php
+    use Dyrynda\Database\Support\CascadeSoftDeletes;
+    use Illuminate\Database\Eloquent\Model;
+    use Illuminate\Database\Eloquent\SoftDeletes;
 
-## Learning Laravel
+    class Category extends Model
+    {
+        use SoftDeletes, CascadeSoftDeletes;
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+        protected $cascadeDeletes = ['parent_category_id'];
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+        protected $dates = ['deleted_at'];
+    ```
+2.  Using  [Eloquent Events](https://laravel.com/docs/8.x/eloquent#events)  to trigger an event that the parent has been deleted and handle the deletion of the child rows yourself.
 
-## Laravel Sponsors
+### Delete (softDelete) the related records in the translation table:
+```php
+in App\Models\Category.php
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+public static function boot() {  
+  parent::boot();  
+  
+  // before delete() method call this  
+  static::deleting(function($category) {  
+	 DB::table('category_translations')  
+		 ->where('category_id', '=', $category->id)  
+		 ->update(['deleted_at' => Carbon::now()]);  
+  });  
+}
+```
 
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## The final Category model after resolving the above issues:
+```php
+<?php  
+  
+namespace App\Models;  
+  
+use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;  
+use Astrotomic\Translatable\Translatable;  
+use Carbon\Carbon;  
+use Dyrynda\Database\Support\CascadeSoftDeletes;  
+use Illuminate\Database\Eloquent\Factories\HasFactory;  
+use Illuminate\Database\Eloquent\Model;  
+use Illuminate\Database\Eloquent\Relations\BelongsTo;  
+use Illuminate\Database\Eloquent\Relations\HasMany;  
+use Illuminate\Database\Eloquent\SoftDeletes;  
+use Illuminate\Support\Facades\DB;  
+  
+class Category extends Model implements TranslatableContract  
+{  
+	 use Translatable, HasFactory, SoftDeletes, CascadeSoftDeletes;  
+	  
+	 protected string $parentColumn = 'parent_category_id';  
+	 protected $fillable = ['image', 'parent_category_id'];  
+	 protected array $cascadeDeletes = ['children'];  
+	 protected $dates = ['deleted_at'];  
+	 public array $translatedAttributes = ['name', 'desc'];  
+	  
+	 public function parent(): BelongsTo  
+		 {  
+			 return $this->belongsTo(Category::class,$this->parentColumn);  
+		 }  
+	  
+	  public function children(): HasMany  
+		 {  
+			 return $this->hasMany(Category::class, $this->parentColumn);  
+		 }  
+	  
+	  public function allChildren(): HasMany  
+		 {  
+			 return $this->children()->with('allChildren');  
+		 }  
+	  
+	  public static function boot() {  
+		  parent::boot();  
+		  
+		  // before delete() method call this  
+		  static::deleting(function($category) {  
+			 DB::table('category_translations')  
+				 ->where('category_id', '=', $category->id)  
+				 ->update(['deleted_at' => Carbon::now()]);  
+		  });  
+	  }  
+}
+```
+The **CategoryTranslation.php** Model:
+```php
+<?php  
+  
+namespace App\Models;  
+  
+use Dyrynda\Database\Support\CascadeSoftDeletes;  
+use Illuminate\Database\Eloquent\Factories\HasFactory;  
+use Illuminate\Database\Eloquent\Model;  
+use Illuminate\Database\Eloquent\SoftDeletes;  
+  
+class CategoryTranslation extends Model  
+{  
+	 use HasFactory, SoftDeletes, CascadeSoftDeletes;  
+	  
+	 public $timestamps = false;  
+	 protected $fillable = ['name', 'desc'];  
+}
+```
+In the **CategoryController.php**, to delete a category and its children and its nested children:
+```php
+	 /**  
+	  * Remove the specified resource from storage. 
+	  */  
+	 public function destroy(Request $request)  
+	 {
+		  if (is_numeric($request->id)) {  
+			  Category::find($request->id)->allChildren()->get()->each->delete();  
+			  Category::find($request->id)->delete();  
+		  }  
+		  return redirect()->route('dashboard.categories.index');  
+	  }
+  ```

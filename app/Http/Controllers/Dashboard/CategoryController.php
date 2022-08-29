@@ -107,10 +107,18 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, Category $category)
     {
-        $user->update($request->all());
-        return redirect()->route('dashboard.users.index');
+        $category->update($request->all());
+
+        if($request->file('image')) {
+            $fileName = time() . '_image_' . $request->file('image')->getClientOriginalName();
+            $filePath = $request->file('image')->storeAs('uploads/categories/images', $fileName, 'public');
+            $image = '/storage/' . $filePath;
+            $category->update(['image' => $image]);
+            Log::info("Category image has been updated: " . __METHOD__ ." at ".__LINE__);
+        }
+        return redirect()->route('dashboard.categories.index');
     }
 
     /**
@@ -120,7 +128,7 @@ class CategoryController extends Controller
     {
 //         dd(Category::find($request->id)->allChildren()->get());
         if (is_numeric($request->id)) {
-            Category::find($request->id)->children()->delete();
+            Category::find($request->id)->allChildren()->get()->each->delete();
             Category::find($request->id)->delete();
         }
         return redirect()->route('dashboard.categories.index');
